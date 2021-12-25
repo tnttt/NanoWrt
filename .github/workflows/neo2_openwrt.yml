@@ -70,7 +70,6 @@ jobs:
           sed -i '/install/i\./../script/Mods_BeforeBuild.sh' scripts/mk-openwrt.sh
           sed -i 's/set -eu/set -u/' scripts/mk-openwrt.sh
           pushd openwrt
-          . ../script/extra.sh
           sed -i 's/dnsmasq /dnsmasq-full /' include/target.mk
           sed -i '/luci/Id;/packages/Id;' feeds.conf.default
           sed -i '/routing/i\src-git packages https://github.com/friendlyarm/friendlywrt_project_packages^606051a952a3a7c2a7fb0bccb6230617d211067c' feeds.conf.default
