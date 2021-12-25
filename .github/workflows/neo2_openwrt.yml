@@ -33,7 +33,7 @@ jobs:
   build:
     
     runs-on: ubuntu-18.04
-    if: github.repository == 'vinewx/NanoWrt'
+    if: github.repository == 'ctr54188/NanoWrt'
     
     steps:
 
@@ -75,6 +75,13 @@ jobs:
           sed -i '/luci/Id;/packages/Id;' feeds.conf.default
           sed -i '/routing/i\src-git packages https://github.com/friendlyarm/friendlywrt_project_packages^606051a952a3a7c2a7fb0bccb6230617d211067c' feeds.conf.default
           sed -i '/routing/i\src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
+          sed -i '/routing/i\src-git packages https://github.com/coolsnowwolf/packages' feeds.conf.default
+          sed -i '/routing/i\src-git routing https://git.openwrt.org/feed/routing.git' feeds.conf.default
+          sed -i '/routing/i\src-git telephony https://git.openwrt.org/feed/telephony.git' feeds.conf.default
+          sed -i '/routing/i\src-git ssrp https://github.com/fw876/helloworld' feeds.conf.default
+          sed -i '/routing/i\src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
+          sed -i '/routing/i\src-git ctr54188 https://github.com/ctr54188/openwrt-packages' feeds.conf.default
+          sed -i '/routing/i\src-git small https://github.com/kenzok8/small' feeds.conf.default
           sed -i '/routing/a\src-git NanoHatOLED https://github.com/vinewx/NanoHatOLED.git' feeds.conf.default
           cat ../script/settings.sh > package/lean/default-settings/files/zzz-default-settings
           popd
