@@ -90,7 +90,6 @@ jobs:
           quilt import ../patch/*
           quilt push -a
           popd
-      - uses: actions/checkout@v2
       - name: Setup Debug Session
         uses: csexton/debugger-action@master
 
