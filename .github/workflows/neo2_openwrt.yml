@@ -34,7 +34,7 @@ jobs:
   build:
     
     runs-on: ubuntu-18.04
-    if: github.repository == 'ctr54188/NanoWrt'
+    if: github.repository == 'tnttt/NanoWrt'
     
     steps:
 
@@ -138,7 +138,7 @@ jobs:
         id: create_release
         uses: actions/create-release@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.sec_token }}
+          GITHUB_TOKEN: ${{ secrets.SEC_TOKEN }}
         with:
           tag_name: ${{ steps.assemble_artifact.outputs.release_tag }}
           release_name: Automatic Release ${{ steps.assemble_artifact.outputs.release_tag }}
@@ -148,7 +148,7 @@ jobs:
       - name: Upload SD Asset
         uses: actions/upload-release-asset@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.sec_token }}
+          GITHUB_TOKEN: ${{ secrets.SEC_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: ${{ steps.assemble_artifact.outputs.sd_path }}
@@ -158,7 +158,7 @@ jobs:
       - name: Upload EMMC Asset
         uses: actions/upload-release-asset@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.sec_token }}
+          GITHUB_TOKEN: ${{ secrets.SEC_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: ${{ steps.assemble_artifact.outputs.emmc_path }}
