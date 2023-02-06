@@ -10,8 +10,8 @@ rm -rf luci-app-diskman autocore parted luci-theme-argon
 popd
 
 # Fix FullCone NAT in Firewall
-rm -rf network/config/firewall
-svn co https://github.com/coolsnowwolf/lede/trunk/package/network/config/firewall network/config/firewall
+# rm -rf network/config/firewall
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/network/config/firewall network/config/firewall
 
 # autocore
 cp -avx ../../package/autocore .
