@@ -85,8 +85,6 @@ jobs:
           quilt import ../patch/*
           quilt push -a
           popd
-      - name: Setup Debug Session
-        uses: csexton/debugger-action@master
 
       - name: Build OpenWrt
         run: |
