@@ -20,6 +20,9 @@ cp -avx ../../package/autocore .
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
 sed -i '/\t\t\t\t\t\t/d;s/ \/.*$//' luci-theme-argon/luasrc/view/themes/argon/footer.htm
 
+# luci-app-openclash
+git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+
 # ServerChan
 git clone https://github.com/tty228/luci-app-serverchan
 
