@@ -114,18 +114,22 @@ jobs:
           release_tag="v$(date +%Y%m%d)_NEO2"
           sd_path="./out/OpenWrt_$(date +%Y%m%d)_NanoPi-NEO2_aarch64_sd.img.gz"
           sd_name="OpenWrt_$(date +%Y%m%d)_NanoPi-NEO2_aarch64_sd.img.gz"
-          echo "emmc_path=$emmc_path" >> $GITHUB_OUTPUT
-          echo "emmc_name=$emmc_name" >> $GITHUB_OUTPUT
-          echo "config_name=$config_name" >> $GITHUB_OUTPUT
-          echo "release_tag=$release_tag" >> $GITHUB_OUTPUT
-          echo "sd_path=$sd_path" >> $GITHUB_OUTPUT
-          echo "sd_name=$sd_name" >> $GITHUB_OUTPUT
+          echo "##[emmc_path]=$emmc_path" >> $GITHUB_OUTPUT
+          echo "##[emmc_name]=$emmc_name" >> $GITHUB_OUTPUT
+          echo "##[config_name]=$config_name" >> $GITHUB_OUTPUT
+          echo "##[release_tag]=$release_tag" >> $GITHUB_OUTPUT
+          echo "##[sd_path]=$sd_path" >> $GITHUB_OUTPUT
+          echo "##[sd_name]=$sd_name" >> $GITHUB_OUTPUT
+
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
           name: ${{ steps.assemble_artifact.outputs.config_name }}
           path: ./artifact/
+
+
+actions/create-release@latest
 
       - name: Create Release
         id: create_release
