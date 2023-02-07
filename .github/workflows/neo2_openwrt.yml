@@ -74,10 +74,10 @@ jobs:
           . ../script/extra.sh
           sed -i 's/dnsmasq /dnsmasq-full /' include/target.mk
           sed -i '/luci/Id;/packages/Id;' feeds.conf.default
-          sed -i '/routing/i\src-git packages https://github.com/friendlyarm/friendlywrt_project_packages^606051a952a3a7c2a7fb0bccb6230617d211067c' feeds.conf.default
-          sed -i '/routing/i\src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
           sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
           sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+          sed -i '/routing/i\src-git packages https://github.com/friendlyarm/friendlywrt_project_packages^606051a952a3a7c2a7fb0bccb6230617d211067c' feeds.conf.default
+          sed -i '/routing/i\src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
           sed -i '/routing/a\src-git NanoHatOLED https://github.com/vinewx/NanoHatOLED.git' feeds.conf.default
           cat ../script/settings.sh > package/lean/default-settings/files/zzz-default-settings
           popd
@@ -128,8 +128,6 @@ jobs:
           name: ${{ steps.assemble_artifact.outputs.config_name }}
           path: ./artifact/
 
-
-actions/create-release@latest
 
       - name: Create Release
         id: create_release
