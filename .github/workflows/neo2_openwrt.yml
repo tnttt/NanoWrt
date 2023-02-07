@@ -33,7 +33,7 @@ jobs:
 
   build:
     
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: github.repository == 'tnttt/NanoWrt'
     
     steps:
@@ -114,12 +114,12 @@ jobs:
           release_tag="v$(date +%Y%m%d)_NEO2"
           sd_path="./out/OpenWrt_$(date +%Y%m%d)_NanoPi-NEO2_aarch64_sd.img.gz"
           sd_name="OpenWrt_$(date +%Y%m%d)_NanoPi-NEO2_aarch64_sd.img.gz"
-          echo "##[set-output name=emmc_path;]$emmc_path"
-          echo "##[set-output name=emmc_name;]$emmc_name"
-          echo "##[set-output name=config_name;]$config_name"
-          echo "##[set-output name=release_tag;]$release_tag"
-          echo "##[set-output name=sd_path;]$sd_path"
-          echo "##[set-output name=sd_name;]$sd_name"
+          echo "emmc_path=$emmc_path" >> $GITHUB_OUTPUT
+          echo "emmc_name=$emmc_name" >> $GITHUB_OUTPUT
+          echo "config_name=$config_name" >> $GITHUB_OUTPUT
+          echo "release_tag=$release_tag" >> $GITHUB_OUTPUT
+          echo "sd_path=$sd_path" >> $GITHUB_OUTPUT
+          echo "sd_name=$sd_name" >> $GITHUB_OUTPUT
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
@@ -129,7 +129,7 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@latest
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.SEC_TOKEN }}
         with:
